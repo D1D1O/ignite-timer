@@ -29,38 +29,26 @@ export function History() {
               </td>
             </tr>
           </tbody>
-          <tr>
-            <td>Tarefa</td>
-            <td>20 minutos</td>
-            <td>Ha 2 meses</td>
-            <td>
-              <Status statusColor="green">Concluído</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Tarefa</td>
-            <td>20 minutos</td>
-            <td>Ha 2 meses</td>
-            <td>
-              <Status statusColor="yellow">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Tarefa</td>
-            <td>20 minutos</td>
-            <td>Ha 2 meses</td>
-            <td>
-              <Status statusColor="green">Concluído</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Tarefa</td>
-            <td>20 minutos</td>
-            <td>Ha 2 meses</td>
-            <td>
-              <Status statusColor="green">Concluído</Status>
-            </td>
-          </tr>
+          {cycles.map((cycle) => {
+            return (
+              <tr key={cycle.id}>
+                <td>{cycle.task} </td>
+                <td>{cycle.minutesAmount} </td>
+                <td>{cycle.startDate.toISOString()} </td>
+                <td>
+                  {cycle.finishedDate && (
+                    <Status statusColor="green">Concluído</Status>
+                  )}
+                  {cycle.interrupetdDate && (
+                    <Status statusColor="red">Interrompido</Status>
+                  )}
+                  {!cycle.finishedDate && !cycle.interrupetdDate && (
+                    <Status statusColor="yellow">Em andamento</Status>
+                  )}
+                </td>
+              </tr>
+            )
+          })}
         </table>
       </HistoryList>
     </HistoryContainer>

@@ -30,9 +30,7 @@ export const CyclesContext = createContext({} as CycleContextType)
 interface CyclesContextProviderPropds{
   children: ReactNode
 }
-export function CyclesContextProvider({
-    children
-  }:CyclesContextProviderPropds) {
+export function CyclesContextProvider({children}:CyclesContextProviderPropds) {
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
